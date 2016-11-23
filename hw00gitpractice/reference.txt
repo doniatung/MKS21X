@@ -1,0 +1,7 @@
+git clone filename --> clones a file
+
+git add filename --> says which files to add
+
+git commit -m "message of stuff --> locks in a version, adds a comment to the new version
+
+git push filename --> makes it go to github
