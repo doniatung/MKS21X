@@ -4,7 +4,7 @@ public class CirculatingBook{
     private String dueDate;
 
     public CirculatingBook(String author, String title, String ISBN, String callNumber){
-	super();
+	super(author, title, ISBN, callNumber);
     }
 
     public String getPatron(){
@@ -21,7 +21,7 @@ public class CirculatingBook{
 	this.dueDate = dueDate;
     }
 
-    public void checkout(){
+    public void checkout(String patron, String dueDate){
     }
 
     public void returned(boolean returned){
