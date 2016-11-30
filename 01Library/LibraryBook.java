@@ -1,9 +1,9 @@
-abstract Class LibraryBook extends Book implements Comparable{
+abstract class LibraryBook extends Book implements Comparable{
 
     private String callNumber;
 
     public LibraryBook(String author, String title, String ISBN, String callNumber){
-	super();
+	super(author, title, ISBN);
 	this.callNumber = callNumber;
     }
 
@@ -17,22 +17,19 @@ abstract Class LibraryBook extends Book implements Comparable{
 	this.callNumber = callNumber;
     }
 
-    public void checkout(String patron, String due){
-    }
+    abstract void checkout(String patron, String due);
     
 
-    public boolean returned(){
-    }
+    abstract void returned();
 
-    public String circulationStatus(){
-    }
+    abstract String circulationStatus();
 
-    public int compareTo(){
-    }
-    //gotta write this soon 
+    public int compareTo(LibraryBook x){
+	return callNumber.compareTo(x.getCallNumber()) ;
+      }
+    
     public String toString(){
 	return super.toString() + "\nCall Number: " + callNumber;
     }
     
-
-    }
+}
