@@ -1,4 +1,4 @@
-public class CirculatingBook{
+public class CirculatingBook extends LibraryBook{
 
     private String patron;
     private String dueDate;
@@ -22,12 +22,26 @@ public class CirculatingBook{
     }
 
     public void checkout(String patron, String dueDate){
+	if (patron == "null" && dueDate == "null"){
+	    this.patron = patron;
+	    this.dueDate = dueDate;
+	}
     }
 
-    public void returned(boolean returned){
+    public void returned(){
+	patron = "null";
+	dueDate = "null";
     }
 
     public String circulationStatus(){
+	String x = "";
+	if (patron == "null"){
+	    x = "book available on shelves";
+	}
+	else{
+	    x = "Current Holder:" + patron + "\nDue Date:" + dueDate;
+	}
+	return x;
     }
 
     public String toString(){
@@ -40,3 +54,5 @@ public class CirculatingBook{
 	}
 	return x;
     }
+    
+}
