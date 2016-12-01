@@ -24,10 +24,6 @@ public class ReferenceBook extends LibraryBook{
 	System.out.println("Reference Book could not have been checked out--return impossible");
     }
 
-    public int compareTo(ReferenceBook x){
-	return getCallNumber().compareTo(x.getCallNumber());
-    }
-
 
     public String circulationStatus(){
 	return "non-circulating reference book";
