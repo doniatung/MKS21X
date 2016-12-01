@@ -1,4 +1,4 @@
-abstract class LibraryBook extends Book implements Comparable{
+abstract class LibraryBook extends Book implements Comparable<LibraryBook>{
 
     private String callNumber;
 
