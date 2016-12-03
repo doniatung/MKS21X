@@ -38,19 +38,19 @@ public class SuperArray implements Iterable<String> {
     }
     
     public void add(String n){
-       	if (data.length < size + 1){
+       	if (size() >= data.length){
 	    grow();
-	    }
+	}
 	data[size] = n;
 	size ++; 
     }
 
     public void grow(){ 
-	String[] temp = new String[data.length * 2];
-	for (int i = 0; i < data.length ; i ++){
-	    temp[i] = data[i];
-	    data = temp;
+	String[] temp = new String[size * 2 + 1];
+	for (int i = 0; i < size; i ++){
+	    temp[i] = get(i);
 	}
+	data = temp;
     }
 
     public String toString(){
