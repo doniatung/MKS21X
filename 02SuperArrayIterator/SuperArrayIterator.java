@@ -7,8 +7,9 @@ public class SuperArrayIterator implements Iterator<String>{
 
     private int start;
 
-    public SuperArrayIterator(int start){
-	this.start = start;
+    public SuperArrayIterator(SuperArray ary){
+	this.ary = ary;
+        start = 0;
     }
 
     public boolean hasNext(){
