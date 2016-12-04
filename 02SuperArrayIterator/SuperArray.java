@@ -38,7 +38,7 @@ public class SuperArray implements Iterable<String> {
     }
     
     public void add(String n){
-       	if (size() >= data.length){
+       	if (size >= data.length){
 	    grow();
 	}
 	data[size] = n;
