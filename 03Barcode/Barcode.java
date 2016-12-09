@@ -14,27 +14,25 @@ public class Barcode implements Comparable<Barcode>{
       }
       else{
 	  _zip = zip;
-	  _checkDigit = checkSum % 10;
+	  _checkDigit = checkSum(_zip) % 10;
       }
   }
 
      
 // postcondition: computes and returns the check sum for _zip
-  private int checkSum(){
+  private static int checkSum(String zip){
       int ans = 0;
-      for (int i = 0; i < _zip.length(); i ++){
-	  ans += (int) _zip.charAt(i);
+      for (int i = 0; i < zip.length(); i ++){
+	  ans += (int) zip.charAt(i);
       }
       return ans;
   }
-
-
     
 
 //postcondition: format zip + check digit + Barcode 
 //ex. "084518  |||:::|::|::|::|:|:|::::|||::|:|"      
   public String toString(){
-      return _zip + checkDigit + "   " + toCode(_zip);
+      return _zip + _checkDigit + "   " + toCode(_zip);
   }
 
 
@@ -42,42 +40,46 @@ public class Barcode implements Comparable<Barcode>{
   public int compareTo(Barcode other){
       String thisZip = _zip + _checkDigit;
       String otherZip = other._zip + other._checkDigit;
-      
       return thisZip.compareTo(otherZip);
-	  }
+  }
+
+
 
     public static String toCode(String zip){
+	String ans = "|";
 	if (zip.length() != 5){
 	    throw new IllegalArgumentException();
 	}
 	else{
-	    String ans = "|";
+	    zip += checkSum(zip) % 10;
 	    for (int i = 0; i < zip.length(); i ++){
-		int num = zip.charAt(i);
+		char num = zip.charAt(i);
+		String x;
 		switch (num){
-		case 1: ans += ":::||";
+		case '1': x = ":::||";
 		    break;
-		case 2: ans += "::|:|";
+		case '2': x = "::|:|";
 		    break;
-		case 3: ans += "::||:";
+		case '3': x = "::||:";
 		    break;
-		case 4: ans += ":|::|";
+		case '4': x = ":|::|";
 		    break;
-		case 5: ans += ":|:|:";
+		case '5': x = ":|:|:";
 		    break;
-		case 6: ans += ":||::";
+		case '6': x = ":||::";
 		    break;
-		case 7: ans += "|:::|";
+		case '7': x = "|:::|";
 		    break;
-		case 8: ans += "|::|:";
+		case '8': x = "|::|:";
 		    break;
-		case 9: ans += "|:|::";
+		case '9': x = "|:|::";
 		    break;
-		case 0: ans += "||:::";
+		case '0': x = "||:::";
 		    break;
-		default: ans += "smthg";
+		default: x = "smthg";
 		    break;
 		}
+		ans += x; 
 	    }
 	}
       return ans + "|";
@@ -85,16 +87,19 @@ public class Barcode implements Comparable<Barcode>{
 
 
     public static String toZip(String code){
+	String zip = "";
 	if (code.length() != 32){
 	    throw new IllegalArgumentException("Please make sure you have 32 characters in your code");
 	}
-	if (code.charAt(0) != "|"){
+	if (code.charAt(0) != '|'){
 	    throw new IllegalArgumentException("Please make sure your code starts with a bar");
+	}
+	if (code.charAt(code.length()-1) != '|'){
+	    throw new IllegalArgumentException("Left and rightmost characters are not '|'");
 	}
 	//if (checkSum fails) I'm not sure if checkSum is supposed to be printed or not
 	//invalid characters?
 	else{
-	    String zip = "";
 	    int i = 1;
 	    while (i < code.length()-11){
 		String numCode = code.substring(i,i+5);
@@ -120,13 +125,28 @@ public class Barcode implements Comparable<Barcode>{
 		case "||:::": zip += 0;
 		    break;
 		default: throw new IllegalArgumentException("Please make sure you don't have a pattern mismatch");
-		    break;
+		    // break;
 		}
         	i += 5;
 	    }
 	}
-	return ans;
+	if (zip.charAt(5) != checkSum(zip.substring(0,5)) % 10){
+	    throw new IllegalArgumentException("Faulty Barcode- your checkDigit is wrong");
+	}
+	else{
+	    return zip;
+	}
     }
 
-    
+    public static void main (String[]args){
+	Barcode x = new Barcode("08123");
+	System.out.println(x);
+	System.out.println(toCode("12345"));
+	String y = x.toString();
+	System.out.println(y);
+	System.out.println(y.length());
+	System.out.println(toZip(y.substring(10)));
+
+    }
 }
+
