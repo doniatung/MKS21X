@@ -10,7 +10,7 @@ public class Barcode implements Comparable<Barcode>{
 //               _zip and _checkDigit are initialized.
   public Barcode(String zip) {
       if (zip.length() != 5){
-	  throw new RuntimeException();
+	  throw new IllegalArgumentException();
       }
       else{
 	  _zip = zip;
@@ -98,10 +98,9 @@ public class Barcode implements Comparable<Barcode>{
 	    throw new IllegalArgumentException("Left and rightmost characters are not '|'");
 	}
 	//if (checkSum fails) I'm not sure if checkSum is supposed to be printed or not
-	//invalid characters?
 	else{
 	    int i = 1;
-	    while (i < code.length()-11){
+	    while (i < code.length()-5){
 		String numCode = code.substring(i,i+5);
 		switch(numCode){
 		case  ":::||": zip += 1;
@@ -130,23 +129,13 @@ public class Barcode implements Comparable<Barcode>{
         	i += 5;
 	    }
 	}
-	if (zip.charAt(5) != checkSum(zip.substring(0,5)) % 10){
+	if (!zip.substring(5).equals(checkSum(zip.substring(0,5)) % 10 + "")){
 	    throw new IllegalArgumentException("Faulty Barcode- your checkDigit is wrong");
 	}
 	else{
-	    return zip;
+	    return zip.substring(0,5);
 	}
     }
 
-    public static void main (String[]args){
-	Barcode x = new Barcode("08123");
-	System.out.println(x);
-	System.out.println(toCode("12345"));
-	String y = x.toString();
-	System.out.println(y);
-	System.out.println(y.length());
-	System.out.println(toZip(y.substring(10)));
-
-    }
 }
 
