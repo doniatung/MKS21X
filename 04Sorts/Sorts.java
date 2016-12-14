@@ -28,17 +28,44 @@ public class Sorts{
       }
   }
 
+    public static void insertionSort(int[] data){
+	int num;
+	for (int i = 1; i < data.length; i++){
+	    num = data[i];
+	    int counter = i; 
+	    while (counter > 0 && num < data[counter - 1]){
+		    data[counter] = data[counter - 1];
+		    counter --;
+	    }
+	    data[counter] = num;
+	}
+    }
+
+
     public static void main (String[]args){
 	int[] x = {4,2,6,8,12};
-	System.out.print("[");
+	System.out.print("Original : [");
 	for (int i = 0; i < x.length; i++){
 	    System.out.print(x[i]+ ",");
 	}
 	System.out.println("]");
-	selectionSort(x);
-        System.out.print("[");
+	insertionSort(x);
+        System.out.print("Sorted : [");
 	for (int i = 0; i < x.length; i++){
 	    System.out.print(x[i]+ ",");
+	}
+	System.out.println("]\n");
+
+	int[] y = {20,18,14,3,1};
+	System.out.print("Original : [");
+	for (int i = 0; i < y.length; i++){
+	    System.out.print(y[i]+ ",");
+	}
+	System.out.println("]");
+	insertionSort(y);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < y.length; i++){
+	    System.out.print(y[i]+ ",");
 	}
 	System.out.println("]");
     }
