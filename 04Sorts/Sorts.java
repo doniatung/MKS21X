@@ -42,30 +42,50 @@ public class Sorts{
     }
 
 
+    public static void bubbleSort(int[] data){
+	int temp;
+	for (int i = data.length-1; i > 0; i--){
+	    int counter = data.length-1;
+	    while (counter > 0){
+		int index = data.length-counter;
+		if (data[index] < data[index - 1]){
+		    temp = data[index];
+		    data[index] = data[index - 1];
+		    data[index-1] = temp;
+		}
+		counter --;
+	    }
+	}
+
+    }
+
+
+
     public static void main (String[]args){
+	System.out.println(name());
 	int[] x = {4,2,6,8,12};
 	System.out.print("Original : [");
 	for (int i = 0; i < x.length; i++){
-	    System.out.print(x[i]+ ",");
+	    System.out.print(x[i]+ " ");
 	}
 	System.out.println("]");
-	insertionSort(x);
+	bubbleSort(x);
         System.out.print("Sorted : [");
 	for (int i = 0; i < x.length; i++){
-	    System.out.print(x[i]+ ",");
+	    System.out.print(x[i]+ " ");
 	}
 	System.out.println("]\n");
 
 	int[] y = {20,18,14,3,1};
 	System.out.print("Original : [");
 	for (int i = 0; i < y.length; i++){
-	    System.out.print(y[i]+ ",");
+	    System.out.print(y[i]+ " ");
 	}
 	System.out.println("]");
-	insertionSort(y);
+	bubbleSort(y);
         System.out.print("Sorted : [");
 	for (int i = 0; i < y.length; i++){
-	    System.out.print(y[i]+ ",");
+	    System.out.print(y[i]+ " ");
 	}
 	System.out.println("]");
     }
