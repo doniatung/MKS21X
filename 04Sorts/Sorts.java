@@ -46,14 +46,19 @@ public class Sorts{
 	int temp;
 	for (int i = data.length-1; i > 0; i--){
 	    int counter = data.length-1;
+	    boolean check = true;
 	    while (counter > 0){
 		int index = data.length-counter;
 		if (data[index] < data[index - 1]){
 		    temp = data[index];
 		    data[index] = data[index - 1];
 		    data[index-1] = temp;
+		    check = false;
 		}
 		counter --;
+	    }
+	    if (check){
+		return;
 	    }
 	}
 
