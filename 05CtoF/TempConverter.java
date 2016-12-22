@@ -1,11 +1,65 @@
-public class TempConverter{
+import javax.swing.*;
+import java.awt.*;//NEW STUFF!
+import java.awt.event.*;
 
-    public static int CtoF(double t){
-	return (t*9)/5 + 32;
+public class TempConverter extends JFrame implements ActionListener{
+    private Container pane;
+    private JLabel j;
+    private JTextField t;
+    private JTextField t2;
+
+
+    public static String CtoF(double t){
+	return (t * 9) / 5 + 32 + "";
     }
 
-    public static double FtoC(double t){
-	return (t - 32) * 5 / 9;
+    public static String FtoC(double t){
+	return (t - 32) * 5 / 9 + "";
     }
 
+    
+   public TempConverter() {
+    this.setTitle("My first GUI");
+    this.setSize(600,400);
+    this.setLocation(100,100);
+    this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+    pane = this.getContentPane();
+
+       pane.setLayout(new BorderLayout());
+
+      JButton b = new JButton("Celsius to Farenhiet");
+      b.addActionListener(this);
+      b.setActionCommand("CtoF");
+      JButton b2 = new JButton("Farenhiet to Celsius");
+      b2.addActionListener(this);
+      b2.setActionCommand("FtoC");
+      t = new JTextField(10);
+      t2 = new JTextField(10);
+     pane.add(t, BorderLayout.LINE_START);
+     pane.add(b, BorderLayout.PAGE_START);
+     pane.add(b2, BorderLayout.PAGE_END);
+     pane.add(t2, BorderLayout.LINE_END);
+  }
+
+  public void actionPerformed(ActionEvent e){
+   String event = e.getActionCommand();
+   if(event.equals("CtoF")){
+       double s = Integer.parseInt(t.getText());
+       t2.setText(CtoF(s));
+   }
+   if(event.equals("FtoC")){
+       double s = Integer.parseInt(t.getText());
+       t2.setText(FtoC(s));
+   }
+  }
+
+    
+    public static void main(String[] args) {
+     TempConverter g = new TempConverter();
+     g.setVisible(true);
+  }
 }
+
+
+
