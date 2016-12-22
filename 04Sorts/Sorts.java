@@ -74,7 +74,7 @@ public class Sorts{
 	    System.out.print(x[i]+ " ");
 	}
 	System.out.println("]");
-	bubbleSort(x);
+	selectionSort(x);
         System.out.print("Sorted : [");
 	for (int i = 0; i < x.length; i++){
 	    System.out.print(x[i]+ " ");
@@ -88,7 +88,7 @@ public class Sorts{
 	    System.out.print(y[i]+ " ");
 	}
 	System.out.println("]");
-	bubbleSort(y);
+	selectionSort(y);
         System.out.print("Sorted : [");
 	for (int i = 0; i < y.length; i++){
 	    System.out.print(y[i]+ " ");
@@ -102,10 +102,96 @@ public class Sorts{
 	    System.out.print(z[i]+ " ");
 	}
 	System.out.println("]");
-	bubbleSort(z);
+	selectionSort(z);
         System.out.print("Sorted : [");
 	for (int i = 0; i < z.length; i++){
 	    System.out.print(z[i]+ " ");
+	}
+	System.out.println("]");
+	
+	//Insertion Sort
+	System.out.println(name());
+	int[] x2 = {4,2,6,8,12};
+	System.out.print("Original : [");
+	for (int i = 0; i < x2.length; i++){
+	    System.out.print(x2[i]+ " ");
+	}
+	System.out.println("]");
+	insertionSort(x2);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < x2.length; i++){
+	    System.out.print(x2[i]+ " ");
+	}
+
+	System.out.println("]\n");
+
+	int[] y2 = {20,18,14,3,1};
+	System.out.print("Original : [");
+	for (int i = 0; i < y2.length; i++){
+	    System.out.print(y2[i]+ " ");
+	}
+	System.out.println("]");
+	insertionSort(y2);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < y2.length; i++){
+	    System.out.print(y2[i]+ " ");
+	}
+
+	System.out.println("]\n");
+
+	int[] z2 = {};
+	System.out.print("Original : [");
+	for (int i = 0; i < z2.length; i++){
+	    System.out.print(z2[i]+ " ");
+	}
+	System.out.println("]");
+	insertionSort(z2);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < z2.length; i++){
+	    System.out.print(z2[i]+ " ");
+	}
+	System.out.println("]");
+
+	//Bubble Sort
+	System.out.println(name());
+	int[] x3 = {4,2,6,8,12};
+	System.out.print("Original : [");
+	for (int i = 0; i < x3.length; i++){
+	    System.out.print(x3[i]+ " ");
+	}
+	System.out.println("]");
+	bubbleSort(x3);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < x3.length; i++){
+	    System.out.print(x3[i]+ " ");
+	}
+
+	System.out.println("]\n");
+
+	int[] y3 = {20,18,14,3,1};
+	System.out.print("Original : [");
+	for (int i = 0; i < y3.length; i++){
+	    System.out.print(y3[i]+ " ");
+	}
+	System.out.println("]");
+	bubbleSort(y3);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < y3.length; i++){
+	    System.out.print(y3[i]+ " ");
+	}
+
+	System.out.println("]\n");
+
+	int[] z3 = {};
+	System.out.print("Original : [");
+	for (int i = 0; i < z3.length; i++){
+	    System.out.print(z3[i]+ " ");
+	}
+	System.out.println("]");
+	bubbleSort(z3);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < z3.length; i++){
+	    System.out.print(z3[i]+ " ");
 	}
 	System.out.println("]");
 
