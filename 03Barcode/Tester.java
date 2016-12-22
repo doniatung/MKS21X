@@ -17,8 +17,10 @@ public class Tester{
 	//CONSTRUCTOR TESTS
 	//
 	
-	System.out.println("\nCONSTRUCTOR TESTS"
-	}catch(IllegalArgumentException e){
+	System.out.println("\nCONSTRUCTOR TESTS");
+	try{
+	    new Barcode("024df");
+        }catch(IllegalArgumentException e){
 	    e.printStackTrace(); //zip is not correct length
 	}
 	
