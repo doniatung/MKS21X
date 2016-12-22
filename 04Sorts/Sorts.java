@@ -79,6 +79,7 @@ public class Sorts{
 	for (int i = 0; i < x.length; i++){
 	    System.out.print(x[i]+ " ");
 	}
+
 	System.out.println("]\n");
 
 	int[] y = {20,18,14,3,1};
@@ -92,7 +93,22 @@ public class Sorts{
 	for (int i = 0; i < y.length; i++){
 	    System.out.print(y[i]+ " ");
 	}
+
+	System.out.println("]\n");
+
+	int[] z = {};
+	System.out.print("Original : [");
+	for (int i = 0; i < z.length; i++){
+	    System.out.print(z[i]+ " ");
+	}
 	System.out.println("]");
+	bubbleSort(z);
+        System.out.print("Sorted : [");
+	for (int i = 0; i < z.length; i++){
+	    System.out.print(z[i]+ " ");
+	}
+	System.out.println("]");
+
     }
 
 }
