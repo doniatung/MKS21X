@@ -18,16 +18,9 @@ public class Tester{
 	//
 	
 	System.out.println("\nCONSTRUCTOR TESTS");
-	System.out.println(new Barcode("99999"));
 	try{
 	    new Barcode("024df");
-	}catch(IllegalArgumentException e){
-	    e.printStackTrace(); //zip contains a non digit
-	}
-	
-	try{
-	    new Barcode("010101010");
-	}catch(IllegalArgumentException e){
+        }catch(IllegalArgumentException e){
 	    e.printStackTrace(); //zip is not correct length
 	}
 	
@@ -58,8 +51,7 @@ public class Tester{
 	//toZip TESTS
 	//
 	System.out.println("\ntoZip TESTS");
-	System.out.println(Barcode.toCode("99999"));
-      	System.out.println(Barcode.toZip(Barcode.toCode("99999"))); //99999
+	System.out.println(Barcode.toZip(Barcode.toCode("99999"))); //99999
 
 	//exceptions for toZip()
 	try{

@@ -20,7 +20,7 @@ public class TempConverter extends JFrame implements ActionListener{
     
    public TempConverter() {
     this.setTitle("My first GUI");
-    this.setSize(600,400);
+    this.setSize(350,300);
     this.setLocation(100,100);
     this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -28,28 +28,28 @@ public class TempConverter extends JFrame implements ActionListener{
 
        pane.setLayout(new BorderLayout());
 
-      JButton b = new JButton("Celsius to Farenhiet");
+      JButton b = new JButton("Celsius to Farenheit");
       b.addActionListener(this);
       b.setActionCommand("CtoF");
-      JButton b2 = new JButton("Farenhiet to Celsius");
+      JButton b2 = new JButton("Farenheit to Celsius");
       b2.addActionListener(this);
       b2.setActionCommand("FtoC");
       t = new JTextField(10);
       t2 = new JTextField(10);
-     pane.add(t, BorderLayout.LINE_START);
-     pane.add(b, BorderLayout.PAGE_START);
-     pane.add(b2, BorderLayout.PAGE_END);
-     pane.add(t2, BorderLayout.LINE_END);
+     pane.add(t, BorderLayout.PAGE_START);
+     pane.add(b, BorderLayout.LINE_START);
+     pane.add(b2, BorderLayout.LINE_END);
+     pane.add(t2, BorderLayout.PAGE_END);
   }
 
   public void actionPerformed(ActionEvent e){
    String event = e.getActionCommand();
    if(event.equals("CtoF")){
-       double s = Integer.parseInt(t.getText());
+       double s = Double.parseDouble(t.getText());
        t2.setText(CtoF(s));
    }
    if(event.equals("FtoC")){
-       double s = Integer.parseInt(t.getText());
+       double s = Double.parseDouble(t.getText());
        t2.setText(FtoC(s));
    }
   }
